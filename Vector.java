@@ -40,17 +40,19 @@ public class Vector {
 	}
 	
 	public Vector minus(Vector arg) {
-		this.x = this.x - arg.x;
-		this.y = this.y - arg.y;
-		this.z = this.z - arg.z;
-		return this;
+		Vector d3 = new Vector();
+		d3.x = this.x - arg.x;
+		d3.y = this.y - arg.y;
+		d3.z = this.z - arg.z;
+		return d3;
 	}
 	
 	public Vector mult(double arg) {
-		this.x = this.x * arg;
-		this.y = this.y * arg;
-		this.z = this.z * arg;
-		return this;
+		Vector d3 = new Vector();
+		d3.x = this.x * arg;
+		d3.y = this.y * arg;
+		d3.z = this.z * arg;
+		return d3;
 	}
 	
 	public double mult(Vector arg) {
@@ -66,7 +68,9 @@ public class Vector {
 	public void norm() {
 		double l = this.length();
 		double quotient = 1/l;
-		this.mult(quotient);
+		this.x = this.mult(quotient).x;
+		this.y = this.mult(quotient).y;
+		this.z = this.mult(quotient).z;
 	}
 	
 	public int compareTo(Vector arg) {
