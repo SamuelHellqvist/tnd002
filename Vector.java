@@ -65,12 +65,33 @@ public class Vector {
 		return l;
 	}
 	
+	public Vector matrixMult(double[][] arg) {
+		Vector matprod = new  Vector();
+		if(arg.length == 3 && arg[0].length == 3) {
+			matprod.x = arg[0][0] * x + arg[0][1] *y + arg[0][2] *z;
+			matprod.y = arg[1][0] * x + arg[1][1] *y + arg[1][2] *z;
+			matprod.z = arg[2][0] * x + arg[2][1] *y + arg[2][2] *z;
+			
+			return matprod;
+		}
+		
+		return this;
+		
+	}
+	
 	public void norm() {
 		double l = this.length();
 		double quotient = 1/l;
+		Vector d3 = this.mult(quotient);
+		
+		this.x = d3.x;
+		this.y = d3.y;
+		this.z = d3.z;
+		/*
 		this.x = this.mult(quotient).x;
 		this.y = this.mult(quotient).y;
 		this.z = this.mult(quotient).z;
+		*/
 	}
 	
 	public int compareTo(Vector arg) {
@@ -84,7 +105,7 @@ public class Vector {
 			ans = 1;
 		}
 		else if(l1 < l2) {
-			ans = 1;
+			ans = -1;
 		}
 		return ans;
 	}
