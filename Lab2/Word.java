@@ -1,4 +1,4 @@
-package Lab2;
+package lab2;
 
 public class Word {
 	public static int ORIGINAL = 0;
@@ -9,7 +9,7 @@ public class Word {
 	
 	private String theWord;
 	
-	private int count;
+	private int count = 0;
 	
 	public Word(String arg1, int arg2) {
 		theWord = arg1;
@@ -33,26 +33,26 @@ public class Word {
 	}
 	
 	public int compareTo(Word arg) {
+		int v = 3;
 		if(sortCriterion == ORIGINAL) {
 			return 2;
 		}
 		else if (sortCriterion == BYNAME){
-			return this.theWord.compareTo(arg.theWord); //sort alphabetically
+			//System.out.println(theWord.compareTo(arg.theWord));
+			return theWord.compareTo(arg.theWord); //sort alphabetically
 		}
 		else if (sortCriterion == BYCOUNTS) {
 			if (count < arg.count) {
-				return -1;
+				v = -1;
 			}
 			else if(count == arg.count) {
-				return 0;
+				v = 0;
 			}
 			else {
-				return 1;
+				v = 1;
 			}
 		}
-		else {
-			return 8;
-		}
+		return v;
 	}
 	
 	public String toString() {
